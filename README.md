@@ -1,5 +1,5 @@
 # HM0045_Equal_Essence
-Food & HEalthcare Track
+Food & Healthcare Track
 Team:
 Vaidehi Bhonge
 Shruti Baravkar
