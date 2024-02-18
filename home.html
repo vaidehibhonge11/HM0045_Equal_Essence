@@ -1,0 +1,184 @@
+This is Home Page
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <title><h1 style="font-size: 36px; font-weight: bold; font-family: 'Roboto', sans-serif;">Nutri Track</h1></title>
+    <!-- Bootstrap CDN link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            background-color: #1a1a1a;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        nav {
+            background: linear-gradient(to right, #3498db, #03a9f4);
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        nav a {
+            color: #fff;
+            margin: 0 15px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #e74c3c;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #1f1f1f;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .options-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+        }
+
+        .option, .calculate-bmi {
+            width: 200px;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            font-size: 18px;
+            background-size: cover;
+            margin-right: 20px;
+        }
+
+        .current {
+            background-color: #3498db;
+        }
+
+        .healthy {
+            background-color: #2ecc71;
+        }
+
+        .mental {
+            background-color: #e74c3c;
+        }
+
+        .calculate-bmi {
+            background-color: #e67e22;
+            transition: background-color 0.3s ease;
+            margin-right: 0;
+        }
+
+        .calculate-bmi:hover {
+            background-color: #d35400;
+        }
+
+        .option:hover, .calculate-bmi:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .chatbot-logo {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: #03a9f4;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .chatbot-logo:hover {
+            background-color: #3498db;
+        }
+
+        .welcome-message {
+            font-size: 24px;
+            font-weight: bold;
+            color: #3498db;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+        <a href="#">Login</a>
+        <a href="#">Register</a>
+        <a href="#">Logout</a>
+    </nav>
+
+    <header>
+        <h1 style="font-size: 36px; font-weight: bold; font-family: 'Roboto', sans-serif;">Nutri Track</h1>
+        <p>Your Creative Health Journey Starts Here</p>
+    </header>
+
+    <main>
+        <div class="options-container">
+            <a href="info.html" class="option current">Current Dietary Survey</a>
+            <a href="healthy_diet_plan.html" class="option healthy">Start your Healthy Diet Plan</a>
+            <a href="mental_health_chatbot.html" class="option mental">Mental Health Chatbot</a>
+            <a href="#" class="calculate-bmi" onclick="openBMICalculator()">Calculate BMI</a>
+        </div>
+
+        <div class="welcome-message">
+            <p style="font-style: italic; color: #e67e22;">"Unlock the Potential of Your Health Journey"</p>
+            <p style="font-weight: normal;">Welcome to Nutri Track, your creative and personalized health companion. Explore the options above to enhance your well-being.</p>
+        </div>
+    </main>
+
+    <div class="chatbot-logo">
+        <img src="chatbot_logo.png" alt="Chatbot Logo" style="width: 30px; height: 30px;">
+    </div>
+
+    <!-- Bootstrap JS and Popper.js CDN links (required for Bootstrap) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        function openBMICalculator() {
+            window.location.href = 'bmi_calculator.html';
+        }
+    </script>
+
+</body>
+
+</html>

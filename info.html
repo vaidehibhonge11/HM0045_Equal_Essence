@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutrition Tracker</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+        crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #343a40;
+            color: #fff;
+        }
+
+        .navbar-dark .navbar-nav .nav-link {
+            color: #fff;
+        }
+
+        .navbar-dark .navbar-nav .nav-link:hover {
+            color: #f8f9fa;
+        }
+
+        .chatbot {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .chatbot-button {
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            text-align: center;
+            line-height: 60px;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1001;
+        }
+
+        .chatbot-button:hover {
+            background-color: #0056b3;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Nutrition Tracker</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h1 class="mb-4">Nutrition Tracker Form</h1>
+        <!-- Nutrition Tracker Form -->
+        <form>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputAge">Age</label>
+                    <input type="text" class="form-control" id="inputAge" placeholder="Enter your age">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputGender">Gender</label>
+                    <select id="inputGender" class="form-control">
+                        <option selected>Choose...</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="inputWeight">Weight</label>
+                    <input type="text" class="form-control" id="inputWeight" placeholder="Enter your weight">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputHeight">Height</label>
+                    <input type="text" class="form-control" id="inputHeight" placeholder="Enter your height">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputBP">Blood Pressure</label>
+                    <input type="text" class="form-control" id="inputBP" placeholder="Enter your blood pressure">
+                    <small id="bpHelp" class="form-text text-muted">
+                        Choose from the following levels: High, Medium, Low
+                    </small>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputSugarLevel">Sugar Level</label>
+                    <input type="text" class="form-control" id="inputSugarLevel" placeholder="Enter your sugar level">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputCriteria">Select Criteria</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="criteriaRadio" id="highCriteria" value="high">
+                    <label class="form-check-label" for="highCriteria">
+                        High
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="criteriaRadio" id="mediumCriteria"
+                        value="medium">
+                    <label class="form-check-label" for="mediumCriteria">
+                        Medium
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="criteriaRadio" id="lowCriteria" value="low">
+                    <label class="form-check-label" for="lowCriteria">
+                        Low
+                    </label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="reset" class="btn btn-secondary">Reset</button>
+        </form>
+    </div>
+    <!-- Chatbot Button -->
+    <div class="chatbot-button" title="Chat with our Nutrition Assistant">
+        <a href="https://mediafiles.botpress.cloud/a63d8699-7b47-464e-9330-e840be54a7f8/webchat/bot.html"
+            target="_blank">
+            <img src="chatbot-icon.png" alt="Chatbot" width="50">
+        </a>
+    </div>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
+        integrity="sha384-VN9X4t4bEoDy7hCPM5K/uxL6aiUC7vwUc/sJqF4MLvJ10WpbafUeNMs1gF81cHFS"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
+

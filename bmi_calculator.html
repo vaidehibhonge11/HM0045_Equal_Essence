@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <style>
+        /* CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        .app {
+            max-width: 600px;
+            margin: 100px auto;
+            text-align: center;
+            background-color: #333;
+            padding: 40px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            color: #ff4081;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            margin-top: 16px;
+            margin-bottom: 16px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            background-color: #444;
+            color: white;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #ff4081;
+            color: white;
+            padding: 14px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #9c27b0;
+        }
+
+        #bmiResult {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .radio-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .radio-container input[type="radio"] {
+            display: none;
+        }
+
+        .radio-container label {
+            display: block;
+            background-color: #444;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            margin: 0 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .radio-container label:hover {
+            background-color: #555;
+        }
+
+        .radio-container input[type="radio"]:checked+label {
+            background-color: #ff4081;
+        }
+
+        .bmi-category {
+            display: inline-block;
+            margin: 8px;
+            padding: 8px 16px;
+            background-color: #ff4081;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+
+        .bmi-category:hover {
+            background-color: #9c27b0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app">
+        <h1>BMI Calculator</h1>
+        <div class="radio-container">
+            <input type="radio" id="male" name="gender" value="male" checked>
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Female</label>
+        </div>
+        <div>
+            <label for="weight">Weight (kg):</label>
+            <input type="number" id="weight" placeholder="Enter your weight in kilograms">
+        </div>
+        <div>
+            <label for="height">Height (cm):</label>
+            <input type="number" id="height" placeholder="Enter your height in centimeters">
+        </div>
+        <button id="calculate">Calculate BMI</button>
+        <div id="bmiResult"></div>
+    </div>
+
+    <script>
+        // JavaScript code
+        document.getElementById('calculate').addEventListener('click', function () {
+            // Get input values
+            var gender = document.querySelector('input[name="gender"]:checked').value;
+            var weight = parseFloat(document.getElementById('weight').value);
+            var height = parseFloat(document.getElementById('height').value);
+
+            // Check if inputs are valid
+            if (isNaN(weight) || isNaN(height) || weight <= 0 || height <= 0) {
+                alert('Please enter valid weight and height.');
+                return;
+            }
+
+            // Calculate BMI
+            var bmi;
+            if (gender === 'male') {
+                bmi = weight / ((height / 100) ** 2); // Convert height to meters
+            } else {
+                bmi = 1.3 * (weight / ((height / 100) ** 2)); // Convert height to meters and adjust for female
+            }
+
+            // Display BMI result
+            var bmiResultDiv = document.getElementById('bmiResult');
+            bmiResultDiv.textContent = 'Your BMI is: ' + bmi.toFixed(2);
+
+            // Determine BMI category
+            if (bmi < 18.5) {
+                bmiResultDiv.innerHTML += '<br><a href="next_page.html" class="bmi-category">You are underweight.</a>';
+            } else if (bmi >= 18.5 && bmi < 25) {
+                bmiResultDiv.innerHTML += '<br><a href="next_page.html" class="bmi-category">Your weight is normal.</a>';
+            } else if (bmi >= 25 && bmi < 30) {
+                bmiResultDiv.innerHTML += '<br><a href="next_page.html" class="bmi-category">You are overweight.</a>';
+            } else {
+                bmiResultDiv.innerHTML += '<br><a href="next_page.html" class="bmi-category">You are obese.</a>';
+            }
+        });
+    </script>
+</body>
+
+</html>
