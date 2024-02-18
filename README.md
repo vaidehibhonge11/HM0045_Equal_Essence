@@ -31,7 +31,7 @@ Access a wide range of delicious and nutritious recipes curated by nutrition exp
 Each recipe guide provides detailed instructions, nutritional information, and ingredient lists.
 Explore diverse cuisines and cooking methods to keep your meals exciting and satisfying.
 
-AI Chatbot:
+Mental Health AI Chatbot:
 Engage with our AI-powered chatbot to get instant answers to your health-related queries.
 Whether you have questions about nutrition, exercise, or general wellness, our chatbot is here to help 24/7.
 Receive personalized recommendations and tips to support your health journey.
