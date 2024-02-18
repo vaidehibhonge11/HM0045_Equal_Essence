@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="theme-color" content="#2c3e50">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriCare - Data Validation</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000; /* Updated to black background color */
+            color: #fff;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #333; /* Darker background color */
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            color: #fff;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            color: #9d4edd; /* Accent color for website name */
+            margin-bottom: 20px;
+        }
+
+        .tabs {
+            display: inline-block;
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #546e7a;
+            border-radius: 5px 5px 0 0;
+            color: #fff;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        .subbox {
+            display: none;
+        }
+
+        #login {
+            display: block;
+        }
+
+        #register {
+            display: none;
+        }
+
+        h3 {
+            color: #9d4edd; /* Accent color for section headers */
+        }
+
+        input {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            background-color: #444; /* Darker input background color */
+            color: #fff;
+            border: 1px solid #666; /* Darker border color */
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        .para {
+            margin-top: 10px;
+        }
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 5px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -100px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .form-element {
+            display: flex;
+            align-items: center;
+        }
+
+        .form-element input[type="checkbox"] {
+            margin-left: 0px;
+            width: 20px;
+        }
+
+        .form-element label {
+            text-align: left;
+        }
+    </style>
+</head>
+<body onload="bodyload()">
+
+    <h1>NutriCare</h1>
+
+    <div class="container">
+        <p id="lt" class="tabs" onclick="loginTabFun()">Log In</p>
+        <p id="rt" class="tabs" onclick="regTabFun()">Sign Up</p>
+
+        <div class="clear"></div>
+
+        <div class="box">
+            <div id="login" class="subbox">
+                <h3>Log In <i class='bx bx-log-in-circle'></i></h3>
+                <input id="se" type="email" value="" placeholder="Email" />
+                <input id="sp" type="password" value="" placeholder="Password" />
+
+                <div class="form-element">
+                    <input type="checkbox" onclick="showPass()">
+                    <label>Show Password</label>
+                </div>
+
+                <input type="submit" onclick="login()" value="Submit"/>
+                <div class="para">
+                    <p>Don't have an account? <span  onclick="regTabFun()"><strong>Sign up</strong></span><i class='bx bxl-telegram'></i></p>
+                </div>
+            </div>
+
+            <div id="register" class="subbox">
+                <h3>Sign Up <i class='bx bx-log-out-circle'></i></h3>
+                <input id="name" type="text" value="" placeholder="Name" />
+                <input id="re" type="email" value="" placeholder="Email"/>
+                <input id="phone" type="tel" value="" placeholder="Phone"/>
+                <input id="address" type="text" value="" placeholder="Address"/>
+
+                <div class="tooltip">
+                    <i class="bi bi-info-circle-fill"></i>
+                    <span class="tooltiptext">
+                        <ul>
+                            <li>Must be at least 4 to 15 char long.</li>
+                            <li>Must contain a digit or Special Char</li>
+                            <li>Must contain a lowercase letter.</li>
+                            <li>Must contain an uppercase letter.</li>
+                        </ul>
+                    </span>
+                </div> 
+
+                <input id="rp" type="password" value="" placeholder="Password"/>
+                <input id="rrp" type="password" value="" placeholder="Re write Password"/>
+                <input type="submit" onclick="register()" value="Submit"/>
+            </div>
+        </div>
+    </div>
+
+    <script>
+            var emailArray = [];
+    var passwordArray = [];
+    var nameArray = [];
+    var phoneArray = [];
+    var addressArray = [];
+
+    var loginBox = document.getElementById("login");
+    var regBox = document.getElementById("register");
+
+    var loginTab = document.getElementById("lt");
+    var regTab = document.getElementById("rt");
+
+    // Log in Tab click function......................................
+    function loginTabFun() {
+        regBox.style.display = "none";
+        loginBox.style.display = "block";
+
+        loginTab.style.backgroundColor = "#f5f5f5";
+        regTab.style.backgroundColor = "#ddd";
+    }
+
+    // Sign Up Tab click function.......................................
+    function regTabFun() {
+        regBox.style.display = "block";
+        loginBox.style.display = "none";
+        
+        regTab.style.backgroundColor = "#f5f5f5";
+        loginTab.style.backgroundColor = "#ddd";
+    }
+
+    // Sign up Function...................................................
+    function register() {
+        var name = document.getElementById("name").value.trim();
+        var email = document.getElementById("re").value.trim();
+        var phone = document.getElementById("phone").value.trim();
+        var address = document.getElementById("address").value.trim();
+        var password = document.getElementById("rp").value.trim();
+        var passwordRetype = document.getElementById("rrp").value.trim();
+        var regExpEmail = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+        var regExpPhone = /^[0-9]{10}$/;
+        var lowerCaseLetters = /[a-z]/g;
+        var upperCaseLetters = /[A-Z]/g;
+        var numbers = /[0-9]/g;
+
+        // Validate Name
+        if (name.length === 0) {
+            alert('Please enter your Name.');
+            return;
+        }
+
+        // Validate Email
+        if (email.length === 0 || !email.match(regExpEmail)) {
+            alert('Invalid Email');
+            return;
+        }
+
+        // Validate Phone
+        if (phone.length === 0 || !phone.match(regExpPhone)) {
+            alert('Invalid Phone number');
+            return;
+        }
+
+        // Validate Address (assuming any non-empty string is valid for Address)
+        if (address.length === 0) {
+            alert('Please enter your Address.');
+            return;
+        }
+
+        // Validate Password
+        if (password.length === 0 || (password.length < 4) || (password.length > 15) || !password.match(numbers) || !password.match(upperCaseLetters) || !password.match(lowerCaseLetters)) {
+            alert('Invalid Password');
+            return;
+        }
+
+        // Validate Retype Password
+        if (passwordRetype === "") {
+            alert("Re-write Password required.");
+            return;
+        } else if (password !== passwordRetype) {
+            alert("Passwords don't match. Please retype your Password.");
+            return;
+        }
+
+        // Check if email is already registered
+        if (emailArray.indexOf(email) === -1) {
+            // If not, add the new user
+            emailArray.push(email);
+            passwordArray.push(password);
+            nameArray.push(name);
+            phoneArray.push(phone);
+            addressArray.push(address);
+
+            alert(name + ", thanks for registration. \n Try to log in now");
+
+            // Hide registration form and show login form
+            regBox.style.display = "none";
+            loginBox.style.display = "block";
+
+            // Make Empty input fields
+            document.getElementById("name").value = "";
+            document.getElementById("re").value = "";
+            document.getElementById("phone").value = "";
+            document.getElementById("address").value = "";
+            document.getElementById("rp").value = "";
+            document.getElementById("rrp").value = "";
+        } else {
+            alert(email + " is already registered. Please use a different email.");
+            return;
+        }
+    }
+
+    // Rest of the code (login, showPass, bodyload) goes here...
+
+    function login() {
+        var msg = document.getElementById('msg');
+        var email = document.getElementById("se").value.trim();
+        var password = document.getElementById("sp").value.trim();
+
+        var i = emailArray.indexOf(email);
+
+        if (emailArray.indexOf(email) === -1) {
+            if (email === "") {
+                alert("Email required.");
+                return;
+            }
+            alert("Email does not exist.");
+            return;
+        } else if (passwordArray[i] !== password) {
+            if (password === "") {
+                alert("Password required.");
+                return;
+            }
+            alert("Password does not match.");
+            return;
+        } else {
+            alert(email + " you are Successfully logged in. \n Welcome to our website.");
+
+            // Make input field Empty
+            document.getElementById("se").value = "";
+            document.getElementById("sp").value = "";
+            return;
+        }
+    }
+
+
+    function showPass() {
+        var x = document.getElementById("sp");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+
+    function bodyload() {
+    alert("Page loaded successfully!");
+}
+    </script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</body>
+</html>
